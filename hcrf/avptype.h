@@ -8,19 +8,19 @@
 #ifndef AVPTYPE_H_
 #define AVPTYPE_H_
 
-#include <map>
-#include <iostream>
-#include <cassert>
+//#include <map>
+//#include <iostream>
+//#include <cassert>
+#include <string>
 
 using namespace std;
 
 class avptype
 {
-	map<string, string> m;
 
 public:
   avptype();
-  string getVal(string val);
+  //string getVal(string val);
   string decodeOctetString(int c,char* p);
   string decodeUTF8String(int c,char* p);
   unsigned char* decodeIP(int c,char* p);
