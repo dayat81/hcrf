@@ -74,7 +74,7 @@ void handle(int newsock)
 	         string ori ="vmclient.myrealm.example";
 	         //printf("size : %i\n",ori.size());
 	         char *pr=a.encodeOctetString(264,0,f,ori);
-	         printf("pr: %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3));
+	         printf("pr: %02X %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3),*(pr+4));
 	     }
     }
     /* recv(), send(), close() */
