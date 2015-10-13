@@ -1,6 +1,6 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		hcrf.o
+OBJS =		hcrf.o avptype.o diameter.o avp.o
 
 LIBS =
 
