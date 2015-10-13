@@ -70,6 +70,11 @@ void handle(int newsock)
 	        	 printf("decoded : %d.%d.%d.%d\n", *ipp, *(ipp+1), *(ipp+2), *(ipp+3));
 	         }
 	         printf("end\n");
+	         char f=0x40;
+	         string ori ="vmclient.myrealm.example";
+	         //printf("size : %i\n",ori.size());
+	         char *pr=a.encodeOctetString(264,0,f,ori);
+	         printf("pr: %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3));
 	     }
     }
     /* recv(), send(), close() */
