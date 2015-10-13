@@ -13,6 +13,7 @@
 //#include <cassert>
 #include <string>
 #include <stdint.h>
+#include "avp.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
   avptype();
   //string getVal(string val);
   string decodeOctetString(int c,char* p);
-  char* encodeOctetString(int32_t acode,int32_t vcode,char flags,string value);
+  avp encodeOctetString(int32_t acode,int32_t vcode,char flags,string value);
   string decodeUTF8String(int c,char* p);
   unsigned char* decodeIP(int c,char* p);
 };

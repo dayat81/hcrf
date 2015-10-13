@@ -8,6 +8,10 @@
 #include "diameter.h"
 //#include <stdio.h>
 
+diameter::diameter(){
+
+}
+
 diameter::diameter(char* p,int remains){
 	//p is pointer to first byte
 	int8_t reqbit=(0x80&*p);

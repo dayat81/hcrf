@@ -19,6 +19,7 @@ void handle(int newsock)
     bzero(head,4);
 
     int n = read(newsock,head,4);
+    //char* h=head;
     if(n>0){
 		int32_t l =(((0x00 & 0xff) << 24) | ((head[1] & 0xff) << 16)| ((head[2] & 0xff) << 8) | ((head[3] & 0xff)));
 		printf("len: %zu\n",l);
@@ -73,8 +74,48 @@ void handle(int newsock)
 	         char f=0x40;
 	         string ori ="vmclient.myrealm.example";
 	         //printf("size : %i\n",ori.size());
-	         char *pr=a.encodeOctetString(264,0,f,ori);
-	         printf("pr: %02X %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3),*(pr+4));
+	         avp b=a.encodeOctetString(264,0,f,ori);
+	         char* pr=b.val;
+//	         int count=0;
+//	         while(count<8){
+//	        	 printf("%02X ",*pr);
+//	        	 pr++;
+//	        	 count++;
+//	         }
+	         printf("pr: %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3));
+	         pr=pr+4;
+	         printf("pr: %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3));
+//	         pr=pr+4;
+//	         printf("pr: %02X %02X %02X %02X\n",*pr,*(pr+1),*(pr+2),*(pr+3));
+	         //create diameter reply
+//	         diameter reply=diameter();
+//	         reply.remains=b.len+20;
+	         int l_resp=b.len+20;
+	         char *ptr1 = (char*)&l_resp;
+	         char res[l_resp];
+	         bzero(res,l_resp);
+	         char* resp=res;
+	         *resp=head[1];
+	         resp++;
+	    	 ptr1=ptr1+2;
+	    	 int i=0;
+	    	 while(i<3){
+	    		 *resp=*ptr1;
+	    		 resp++;
+	    		 ptr1--;
+	    		 i++;
+	    	 }
+	    	 i=0;
+	    	 //hbh=hbh-8;
+	    	 //printf("%02X\n",((*hbh)&0xFF));
+	    	 //printf("%02X\n",*p);
+	    	 while(i<16){
+	    		 *resp=*p;
+	    		 resp++;
+	    		 p++;
+	    		 i++;
+	    	 }
+
 	     }
     }
     /* recv(), send(), close() */

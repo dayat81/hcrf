@@ -19,6 +19,7 @@ public:
 	int32_t commandCode;
 	int32_t appId;
 	diameter(char* p,int remains);
+	diameter();
 	avp getAVP(int32_t acode,int32_t vcode);
 	avp getAVP(int32_t* code,int len);
 };
